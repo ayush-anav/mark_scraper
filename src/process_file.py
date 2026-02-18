@@ -6,7 +6,10 @@ def get_file_arg():
         if(len(sys.argv[1]) < 1):
             raise Exception("check to see if you have supplied the file")
         
-        if(os.path.exists(f'{os.path.abspath(sys.argv[1])}.pdf')):
+        # relative path to file
+        rel_path = f'file/{sys.argv[1]}'
+        
+        if(os.path.exists(f'{os.path.abspath(rel_path)}.pdf')):
             print("file exists")
             # call open_file()
         else:
