@@ -1,5 +1,5 @@
 from open_and_scrape import open_file
-from mark_processing import all_student_mark, grab_id, grab_marks, id_mark_relationship, grab_name, specific_student_mark, total_mark_student, id_total_relationship, highest_to_lowest, lowest_to_highest
+from mark_processing import all_student_mark, grab_id, grab_marks, id_mark_relationship, grab_name, specific_student_mark, total_mark_student, id_total_relationship
 
 
 def menu(extracted_text):
@@ -27,7 +27,7 @@ def menu(extracted_text):
                 break
             
             case "b":
-                print(highest_to_lowest(total_id_relo))
+                print(highest_to_lowest(total_id_relo, every_student_mark))
                 break
             
             case "c":
@@ -55,7 +55,30 @@ def display_hello():
 ║  a ➜ Display marks by FEMIS ID           ║
 ║  b ➜ Rank Highest → Lowest               ║
 ║  c ➜ Rank Lowest  → Highest              ║
-║  q ➜ Quit                                ║
+║  q ➜ Quit                                ║ 
+║                                          ║
+║  NOTE: (options)                         ║
+║  b and c will generate a file :)         ║
 ╚══════════════════════════════════════════╝
 """)
-    
+
+def highest_to_lowest(id_total_relationship, every_student_mark):
+    h_t_l = sorted(id_total_relationship, key = lambda x: x[1], reverse=True)
+    data = write_to_file("highest_to_lowest", h_t_l, every_student_mark)
+    return data
+
+def lowest_to_highest(id_total_relationship):
+    l_t_l = sorted(id_total_relationship, key = lambda x: x[1])    
+    data = write_to_file("lowest_to_highest", l_t_l, every_student_mark)
+    return data
+
+def write_to_file(filename, data, every_student_mark):
+    file_data = "\n\n\tID\tSTUDENT DETAILS\t\tMARK\n\n"
+    i = 1
+    with open(f"{filename}.txt", "w") as f:
+        for tup in data:
+            id, mark = tup
+            file_data += f"NO: {i} ||  {id}: {specific_student_mark(id, every_student_mark)[1]} = {mark}\n"
+            i+=1
+        f.write(file_data)
+    return file_data

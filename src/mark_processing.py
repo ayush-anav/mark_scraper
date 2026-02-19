@@ -83,14 +83,3 @@ def id_total_relationship(student_id_array, id_mark):
     return arr_tuple
 
 
-def highest_to_lowest(id_total_relationship):
-    h_t_l = sorted(id_total_relationship, key = lambda x: x[1], reverse=True)
-    for tup in h_t_l:
-        id, mark = tup
-        
-    return h_t_l
-    
-    # return h_t_l
-
-def lowest_to_highest(id_total_relationship):
-    return sorted(id_total_relationship, key = lambda x: x[1])
