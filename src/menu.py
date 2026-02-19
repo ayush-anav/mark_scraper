@@ -31,7 +31,7 @@ def menu(extracted_text):
                 break
             
             case "c":
-                print(lowest_to_highest(total_id_relo))
+                print(lowest_to_highest(total_id_relo, every_student_mark))
                 break
             
             case "q":
@@ -67,7 +67,7 @@ def highest_to_lowest(id_total_relationship, every_student_mark):
     data = write_to_file("highest_to_lowest", h_t_l, every_student_mark)
     return data
 
-def lowest_to_highest(id_total_relationship):
+def lowest_to_highest(id_total_relationship, every_student_mark):
     l_t_l = sorted(id_total_relationship, key = lambda x: x[1])    
     data = write_to_file("lowest_to_highest", l_t_l, every_student_mark)
     return data
