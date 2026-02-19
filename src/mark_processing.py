@@ -49,9 +49,9 @@ def id_mark_relationship(marks, student_id):
     i = 0
     final_arr = []
     for id in student_id:
-        obj = {
-            id:marks[i:i+5]
-        }
+        obj = (
+            id, marks[i:i+5]
+        )
         final_arr.append(obj)
         i+=5
     return final_arr
@@ -60,6 +60,25 @@ def id_mark_relationship(marks, student_id):
 
 def total_mark_student(student_id, id_mark):
     total = 0
-    for mark in id_mark[0][student_id]:
-        total += int(mark)
+    # first find that student in id_mark relationship
+
+    i = 0
+    for mark in id_mark:
+        if mark[0] == student_id:
+            # accessing array of marks for that student
+            for specific_mark in mark[1]:
+                total += int(specific_mark)
+        # move ahead if match not found
+        i+=1 
+    
     return total
+
+# creates another relationship between student_id : total
+def id_total_relationship(student_id_array, id_mark):
+    arr_tuple = []
+    total = 0
+    for student_id in student_id_array:
+        total += total_mark_student(student_id, id_mark)
+        arr_tuple.append((student_id, total))
+    
+    print(arr_tuple)

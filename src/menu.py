@@ -1,5 +1,5 @@
 from open_and_scrape import open_file
-from mark_processing import all_student_mark, grab_id, grab_marks, id_mark_relationship, grab_name, specific_student_mark, total_mark_student
+from mark_processing import all_student_mark, grab_id, grab_marks, id_mark_relationship, grab_name, specific_student_mark, total_mark_student, id_total_relationship
 
 
 def menu(extracted_text):
@@ -27,6 +27,7 @@ def menu(extracted_text):
                 break
             
             case "b":
+                print(id_total_relationship(all_students_id, id_mark))
                 break
             
             case "c":
