@@ -8,16 +8,20 @@ def menu(extracted_text):
     all_students_id = grab_id(extracted_text)
     raw_marks = grab_marks(extracted_text)
     every_student_mark = all_student_mark(extracted_text)
+    
+    id_mark = id_mark_relationship(raw_marks, all_students_id)
+    
     while True:
         user_choice = input("SELECT (a,b,c OR q)-> ")
         
         match(user_choice):
             case "a":
+                                
                 student_id = input("Enter ID: ")
                 if(validate_student_id(student_id, all_students_id)):
-                    # id_mark = id_mark_relationship(all_students_id, all_students_mark)
                     print(f"\n======================================================\n")
                     print(f"{specific_student_mark(student_id, every_student_mark)}")
+                    
                     print(f"\n======================================================\n")
                 break
             
