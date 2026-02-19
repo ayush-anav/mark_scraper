@@ -1,5 +1,5 @@
 from open_and_scrape import open_file
-from mark_processing import all_student_mark, grab_id, grab_marks, id_mark_relationship, grab_name, specific_student_mark, total_mark_student, id_total_relationship
+from mark_processing import all_student_mark, grab_id, grab_marks, id_mark_relationship, grab_name, specific_student_mark, total_mark_student, id_total_relationship, highest_to_lowest, lowest_to_highest
 
 
 def menu(extracted_text):
@@ -10,7 +10,7 @@ def menu(extracted_text):
     every_student_mark = all_student_mark(extracted_text)
     
     id_mark = id_mark_relationship(raw_marks, all_students_id)
-    
+    total_id_relo = id_total_relationship(all_students_id, id_mark)
     while True:
         user_choice = input("SELECT (a,b,c OR q)-> ")
         
@@ -27,10 +27,11 @@ def menu(extracted_text):
                 break
             
             case "b":
-                print(id_total_relationship(all_students_id, id_mark))
+                print(highest_to_lowest(total_id_relo))
                 break
             
             case "c":
+                print(lowest_to_highest(total_id_relo))
                 break
             
             case "q":
