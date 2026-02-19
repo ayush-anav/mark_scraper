@@ -58,3 +58,8 @@ def id_mark_relationship(marks, student_id):
     # you can cast the .values() of dict to int() when using it :)
 
 
+def total_mark_student(student_id, id_mark):
+    total = 0
+    for mark in id_mark[0][student_id]:
+        total += int(mark)
+    return total

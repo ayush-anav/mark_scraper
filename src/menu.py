@@ -1,5 +1,5 @@
 from open_and_scrape import open_file
-from mark_processing import all_student_mark, grab_id, grab_marks, id_mark_relationship, grab_name, specific_student_mark
+from mark_processing import all_student_mark, grab_id, grab_marks, id_mark_relationship, grab_name, specific_student_mark, total_mark_student
 
 
 def menu(extracted_text):
@@ -18,10 +18,11 @@ def menu(extracted_text):
             case "a":
                                 
                 student_id = input("Enter ID: ")
+                
                 if(validate_student_id(student_id, all_students_id)):
                     print(f"\n======================================================\n")
                     print(f"{specific_student_mark(student_id, every_student_mark)}")
-                    
+                    print(f"\nTOTAL MARK: {total_mark_student(student_id, id_mark)}")
                     print(f"\n======================================================\n")
                 break
             
