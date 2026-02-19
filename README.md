@@ -11,3 +11,8 @@ I am taking the marksheet supplied to teachers and eliminating some grunt work t
 This is not intended to REPLACE anything except for manual data analysis.  Regular data processing in excel or other common practice among storing data should be done afterwards.  
 
 This is just a little tool, made with love :)
+
+
+--==--
+UPDATE REGEX IF STUDENT ID IS MORE THAN 7, RIGHT NOW ITS BETWEEN 6-7 DIGITS
+--==--
